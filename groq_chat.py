@@ -244,11 +244,17 @@ class GroqChat:
             console.print(f"[error]Alias not found: {arg}[/error]")
 
     def cmd_list_wd(self):
+        from rich.table import Table
+        from rich.box import ROUNDED
         if not self.working_dirs:
             console.print("[warning]No working directories saved.[/warning]")
             return
+        t = Table(title="Working Directories", box=ROUNDED)
+        t.add_column("Alias", style="label")
+        t.add_column("Path",  style="dim")
         for d in self.working_dirs:
-            console.print(d["path"])
+            t.add_row(d["name"], d["path"])
+        console.print(t)
 
     def greedy_search_file(self, dir_name: str, query: str) -> str:
         """
@@ -540,7 +546,7 @@ class GroqChat:
   table{{width:100%;border-collapse:collapse;margin:1rem 0;}}
   th,td{{border:1px solid #444;padding:.75rem;}}
 </style></head><body>
-<div id="logo"><span class="rainbow-text">></span>GROQ CHAT CLI</div>
+<div id="logo"><span class="rainbow-text">></span>GROQ CHAT CLI MINI</div>
 <div id="app-container"><div id="content"></div></div>
 <script>
   document.getElementById("content").innerHTML=marked.parse({json_content});
@@ -735,7 +741,7 @@ class GroqChat:
         from rich.table import Table
         from rich.panel import Panel
         from rich.box import ROUNDED, SIMPLE
-        t = Table(title="GROQ CHAT CLI — Commands", title_style="header", show_header=True,
+        t = Table(title="GROQ CHAT CLI MINI — Commands", title_style="header", show_header=True,
                   header_style="bold cyan", box=ROUNDED)
         t.add_column("Command",     style="label", min_width=22)
         t.add_column("Description", min_width=50)
@@ -835,8 +841,8 @@ class GroqChat:
 
         # Banner
         art = [
-            " ▝▜▄     [bold]Groq Chat CLI[/bold]",
-            "   ▝▜▄   ",
+            " ▝▜▄     [bold]Groq Chat CLI Mini[/bold]",
+            "   ▝▜▄   [dim](MINI VERSION)[/dim]",
             "  ▗▟▀    [bold]Ready[/bold]",
             f" ▝▀      [bold]Model: {self.model}[/bold]  /models",
         ]
