@@ -1,6 +1,6 @@
 # Groq Chat Mini
 
-A focused terminal chat client for the [Groq API](https://console.groq.com/), built around three core use cases: **chat, text summarization, and file attachment**. Supports OCR for scanned PDFs and images (Vietnamese + English).
+A focused terminal chat client for the [Groq API](https://console.groq.com/), built around three core use cases: **chat, text summarization, and file attachment**. Supports OCR for scanned PDFs and images (Vietnamese + English). (THis is a simplified version of Groq-Chat-CLI)
 
 ---
 
